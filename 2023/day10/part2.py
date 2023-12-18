@@ -25,13 +25,13 @@ with open('2023\day10\input.txt', 'r') as input:
                     prev = pos
                     pos = newPos
                     break
-    def bfs(i, j):
+    def dfs(i, j):
         for n in range(4):
             di = i + d4[n][0]
             dj = j + d4[n][1]
             if tiles[di][dj] == '.':
                 tiles[di][dj] = 'I'
-                bfs(di, dj)
+                dfs(di, dj)
 
     def count():
         output = 0
@@ -56,6 +56,6 @@ with open('2023\day10\input.txt', 'r') as input:
                     if data[y][x] in pipes and d4[k] in pipes[data[y][x]]:
                         solve((x, y), (j, i), d4[k])
                         tiles[2*i+2][2*j] = 'I'
-                        bfs(2*i+2, 2*j)
+                        dfs(2*i+2, 2*j)
                         print(count())
                         break
